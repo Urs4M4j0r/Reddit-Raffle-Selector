@@ -11,8 +11,8 @@ mail = Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'redditraffler@gmail.com'
-app.config['MAIL_PASSWORD'] = 'ATeh1175!!!!'
+app.config['MAIL_USERNAME'] = 'XXXXXXXXXXXXXXX'
+app.config['MAIL_PASSWORD'] = 'XXXXXXXXXXXXX'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -37,7 +37,7 @@ def result():
 def getNames(url):
     names = []
     
-    reddit = praw.Reddit(client_id='c6vvDv8JvO-sLA', client_secret='IW9dQosQPwWtrWWAOyk-iGEVrf4TZg', user_agent='Comment Raffle') #, username='ejh0007', password='ATeh1175!!!!')
+    reddit = praw.Reddit(client_id='XXXXXXX', client_secret='XXXXXXXXXXX', user_agent='Comment Raffle')
     submission = reddit.submission(url=url)
     submission.comments.replace_more(limit=None, threshold=0)
     for top_level_comment in submission.comments:
@@ -74,8 +74,8 @@ def sendMail():
 def sendEmail(email, message):
    msg = Message(
                 'Hello',
-                sender ='redditraffler@gmail.com',
-                recipients = ['redditraffler@gmail.com']
+                sender ='XXXXXXXXXXX',
+                recipients = ['XXXXXXXXXXXX']
                )
    msg.body = message
    mail.send(msg)
