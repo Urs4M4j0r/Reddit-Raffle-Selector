@@ -35,7 +35,7 @@ def result():
         return render_template('rafflerout.html',result = result)
 
 def getNames(url):
-    names = []
+    names = set({})
     
     reddit = praw.Reddit(client_id='XXXXXXX', client_secret='XXXXXXXXXXX', user_agent='Comment Raffle')
     submission = reddit.submission(url=url)
@@ -45,11 +45,8 @@ def getNames(url):
             continue
         elif not top_level_comment.author:
             continue
-        names.append(str(top_level_comment.author))
-    res = []
-    for i in names:
-        if i not in res:
-            res.append(i)
+        names.add(str(top_level_comment.author))
+    res = list(names)
     randomUser = res[randint(0, len(res)-1)]
     print(randomUser)
     return randomUser
