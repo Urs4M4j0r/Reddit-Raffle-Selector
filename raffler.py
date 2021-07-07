@@ -47,7 +47,7 @@ def getNames(url):
             continue
         names.add(str(top_level_comment.author))
     res = list(names)
-    randomUser = res[randint(0, len(res)-1)]
+    randomUser = random.SystemRandom().choice(res)
     print(randomUser)
     return randomUser
 
