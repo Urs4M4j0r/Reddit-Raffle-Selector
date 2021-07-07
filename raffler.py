@@ -11,7 +11,7 @@ mail = Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'XXXXXXXXXXXXX'
+app.config['MAIL_USERNAME'] = 'XXXXXXXXXXXXXXX'
 app.config['MAIL_PASSWORD'] = 'XXXXXXXXXXXXX'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -35,9 +35,9 @@ def result():
         return render_template('rafflerout.html',result = result)
 
 def getNames(url):
-    names = set({})
+    names = []
     
-    reddit = praw.Reddit(client_id='XXXXXXXXXXXXX', client_secret='XXXXXXXXXXXXX', user_agent='Comment Raffle')
+    reddit = praw.Reddit(client_id='XXXXXXX', client_secret='XXXXXXXXXXX', user_agent='Comment Raffle')
     submission = reddit.submission(url=url)
     submission.comments.replace_more(limit=None, threshold=0)
     for top_level_comment in submission.comments:
@@ -45,8 +45,11 @@ def getNames(url):
             continue
         elif not top_level_comment.author:
             continue
-        names.add(str(top_level_comment.author))
-    res = list(names)
+        names.append(str(top_level_comment.author))
+    res = []
+    for i in names:
+        if i not in res:
+            res.append(i)
     randomUser = res[randint(0, len(res)-1)]
     print(randomUser)
     return randomUser
@@ -71,8 +74,8 @@ def sendMail():
 def sendEmail(email, message):
    msg = Message(
                 'Hello',
-                sender ='XXXXXXXXXXXXX',
-                recipients = ['XXXXXXXXXXXXX']
+                sender ='XXXXXXXXXXX',
+                recipients = ['XXXXXXXXXXXX']
                )
    msg.body = message
    mail.send(msg)
