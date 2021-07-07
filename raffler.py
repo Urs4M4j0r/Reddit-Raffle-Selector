@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import praw
 from praw.models import MoreComments
-from random import randint
+import random
 from flask_mail import Mail, Message
 
 
