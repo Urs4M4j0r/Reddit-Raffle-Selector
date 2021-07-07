@@ -36,9 +36,13 @@
 							<h1 class="major">Pick a winner!</h1>
 							<form action = "/result" method = "POST"> Reddit thread URL: <input type="text" name="url">
 							<p></p>
-							<input type="submit" value="Select winner">
-							</form>
-							
+							<div id="formsubmitbutton">
+							<input type="submit" value="Select winner" onclick="ButtonClicked()">
+							</div>
+							<div id="buttonreplacement"  style="margin-left:30px; display:none;">
+							<img src="/static/images/loader.gif" alt="loading...">
+							</div>
+							</form>							
 						</div>
 					</section>
 
